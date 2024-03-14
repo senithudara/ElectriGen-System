@@ -3,31 +3,58 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const orderSchema = new Schema({
-    Name: {
+    distributorId: {
         type: String,
         required: true
     },
-    ID: {
+    distributorName: {
         type: String,
         required: true
     },
-    Item: {
+
+    item1_code: {
         type: String,
         required: true
     },
-    Quantity: {
+    item1_name: {
+        type: String,
+        required: true
+    },
+    item1_quantity: {
         type: Number,
         required: true
     },
-    Status: {
+
+    item2_code: {
         type: String,
         required: true
     },
-    
-    timestamp: {
-        type: Date,
-        default: Date.now
-    }
-});
+    item2_name: {
+        type: String,
+        required: true
+    },
+    item2_quantity: {
+        type: Number,
+        required: true
+    },
 
-module.exports = mongoose.model('Orders', orderSchema)
+    item3_code: {
+        type: String,
+        required: true
+    },
+    item3_name: {
+        type: String,
+        required: true
+    },
+    item3_quantity: {
+        type: Number,
+        required: true
+    },
+
+    orderStatus: {
+        type: String,
+        required: true
+    }
+},{timestamps:true})
+
+module.exports = mongoose.model('Order', orderSchema)
