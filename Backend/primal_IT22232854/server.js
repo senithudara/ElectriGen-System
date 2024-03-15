@@ -20,6 +20,12 @@ connection.once("open",() => {
     console.log("Mongodb Connection Success!");
 })
 
+
+const salesRouter = require("./routes/Sales");
+
+app.use("/sales",salesRouter);
+
+
 app.listen(PORT, () => {
     console.log(`Server is up and running at port ${PORT}`)
   })
