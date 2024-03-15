@@ -21,7 +21,7 @@ const OrderPlace = () => {
 
         //method calling
         fetchOrders()  
-    }, [])
+    }, [dispatch])
 
 
     return (

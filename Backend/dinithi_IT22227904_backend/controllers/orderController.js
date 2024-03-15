@@ -33,6 +33,19 @@ const createOrder = async (req,res) => {
            item2_code,item2_name,item2_quantity,
            item3_code,item3_name,item3_quantity,orderStatus} = req.body
 
+    let emptyFields = []
+    
+    if(!distributorId) {
+        emptyFields.push('distributorId')
+    }
+    if(!distributorName) {
+        emptyFields.push('distributorName')
+    }
+    if(emptyFields.length > 0){
+        return res.status(400).json({error: 'Please Fill In All The Fields!', emptyFields })
+    }
+
+
     //add doc to db
     try{
         const newOrder = await Order.create({distributorId,distributorName,item1_code,item1_name,item1_quantity,

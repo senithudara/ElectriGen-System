@@ -18,6 +18,7 @@ const OrderForm = () => {
     const[orderStatus, setOrderStatus] = useState('')
 
     const[error, setError] = useState('')
+    const[emptyFields, setEmptyFields] = useState([])
 
 const handleSubmit = async (e) => {
     e.preventDefault()
@@ -46,6 +47,7 @@ const handleSubmit = async (e) => {
 
     if(!response.ok){
         setError(json.error)
+        setEmptyFields(json.emptyFields)
     }
     if(response.ok){
         setDistributorId('')
@@ -62,6 +64,7 @@ const handleSubmit = async (e) => {
         setOrderStatus('')
 
         setError(null)
+        setEmptyFields([])
         console.log('new order added', json)
         dispatch({type: 'CREATE_ORDER', payload: json})
     }
@@ -76,6 +79,7 @@ const handleSubmit = async (e) => {
                 type = "text"
                 onChange = {(e) => setDistributorId(e.target.value)}
                 value = {distributorId}
+                className = {emptyFields.includes('distributorId') ? 'error' : ''}
             />
 
             <label>Distributor's Name</label>
@@ -83,6 +87,7 @@ const handleSubmit = async (e) => {
                 type = "text"
                 onChange = {(e) => setDistributorName(e.target.value)}
                 value = {distributorName}
+                className = {emptyFields.includes('distributorName') ? 'error' : ''}
             />
 
             <label>Item(1) code</label>
