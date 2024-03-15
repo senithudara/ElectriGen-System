@@ -1,6 +1,9 @@
-import {useState} from "react"
+import { useState } from "react"
+import { useOrdersContext } from "../hooks/useOrdersContext"
 
 const OrderForm = () => {
+    const{ dispatch } = useOrdersContext()
+
     const[distributorId, setDistributorId] = useState('')
     const[distributorName, setDistributorName] = useState('')
     const[item1_code, setItem1_code] = useState('')
@@ -19,16 +22,23 @@ const OrderForm = () => {
 const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const order = {distributorId,distributorName,
-                  item1_code,item1_name,item1_quantity,
-                  item2_code,item2_name,item2_quantity,
-                  item3_code,item3_name,item3_quantity,
+    const order = {distributorId,
+                   distributorName,
+                  item1_code,
+                  item1_name,
+                  item1_quantity,
+                  item2_code,
+                  item2_name,
+                  item2_quantity,
+                  item3_code,
+                  item3_name,
+                  item3_quantity,
                   orderStatus}
 
     const response = await fetch('/api/orders', {
         method: 'POST',
         body: JSON.stringify(order),
-        header: {
+        headers: {
             'Content-Type' : 'application/json'
         }
     })
@@ -53,6 +63,7 @@ const handleSubmit = async (e) => {
 
         setError(null)
         console.log('new order added', json)
+        dispatch({type: 'CREATE_ORDER', payload: json})
     }
 }
     
