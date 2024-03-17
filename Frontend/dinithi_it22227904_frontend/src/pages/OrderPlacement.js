@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
 import { useOrdersContext } from '../hooks/useOrdersContext.js'
-
 //components
-import OrderDetails from '../components/OrderDetails.js'
 import OrderForm from '../components/OrderForm.js'
 
 const OrderPlace = () => {
@@ -26,13 +24,8 @@ const OrderPlace = () => {
 
     return (
         <div className="OrderPlace">
-            <div className = "orders">
-                {orders && orders.map((order) => (
-                    <OrderDetails key = {order._id} order={order}/>
-                ))}
-            </div>
             <OrderForm/>
-        </div>
+            </div>
     )
 }
 export default OrderPlace

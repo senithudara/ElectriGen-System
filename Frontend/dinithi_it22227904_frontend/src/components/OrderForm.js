@@ -111,6 +111,8 @@ const handleSubmit = async (e) => {
                 value = {item1_quantity}
             />
 
+            {item1_code && item1_name && item1_quantity && (
+            <>
             <label>Item(2) code</label>
             <input
                 type = "text"
@@ -131,7 +133,11 @@ const handleSubmit = async (e) => {
                 onChange = {(e) => setItem2_quantity(e.target.value)}
                 value = {item2_quantity}
             />
+            </>
+            )}
 
+            {item2_code && item2_name && item2_quantity && (
+            <>
             <label>Item(3) code</label>
             <input
                 type = "text"
@@ -152,7 +158,8 @@ const handleSubmit = async (e) => {
                 onChange = {(e) => setItem3_quantity(e.target.value)}
                 value = {item3_quantity}
             />
-
+            </>
+            )}
 
             <label>Order Status</label>
             <input
