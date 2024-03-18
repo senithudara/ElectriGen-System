@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "start",
+			"path": "Frontend/senith_it22104830_frontend",
+			"problemMatcher": [],
+			"label": "npm: start - Frontend/senith_it22104830_frontend",
+			"detail": "react-scripts start"
+		}
+	]
+}
