@@ -1,38 +1,27 @@
 const express=require('express')
-const Export=require('../models/exportModel')
+const {
+    createExport,
+    getExports,
+    getExport,
+    deleteExport,
+    updateExport
+}=require('../controllers/exportController')
 
 const router=express.Router()
 
 //GET all exports
-router.get('/',(req,res)=>{
-    res.json({mssg: 'GET all exports'})
-})
+router.get('/',getExports)
 
 //GET a single export
-router.get('/:id',(req,res)=>{
-    res.json({mssg: 'GET a single export'})
-})
+router.get('/:id',getExport)
 
 //POST a new export
-router.post('/',async (req,res)=>{
-    const{exportOrderID, importer, itemID, quantity, status}=req.body
-
-    try{
-        const exportt=await Export.create({exportOrderID, importer, itemID, quantity, status})
-        res.status(200).json(exportt)
-    }catch(error){
-        res.status(400).json({error: error.message})
-    }
-})
+router.post('/',createExport)
 
 //DELETE an export
-router.delete('/:id',(req,res)=>{
-    res.json({mssg: 'DELETE an export'})
-})
+router.delete('/:id',deleteExport)
 
 //UPDATE a export
-router.patch('/:id',(req,res)=>{
-    res.json({mssg: 'UPDATE an export'})
-})
+router.patch('/:id',updateExport)
 
 module.exports=router
