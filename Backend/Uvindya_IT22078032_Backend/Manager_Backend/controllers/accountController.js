@@ -25,7 +25,7 @@ if(!mongoose.Types.ObjectId.isValid(id)){
     res.status(200).json(account)
 }
 
-//create new Account
+//Addcreate new Account
 const createAccount=async(req,res)=>{
     const{fname,lname,id,pword,dob,email,contactNo,role}=req.body
    // add doc to db

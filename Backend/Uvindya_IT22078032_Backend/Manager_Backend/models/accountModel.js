@@ -18,6 +18,7 @@ const accountSchema=new Schema({
         required:true
     },
 
+    
     pword:{
         type:String,
         required:true
@@ -46,6 +47,7 @@ const accountSchema=new Schema({
     }
   
 
+    
     
 
 

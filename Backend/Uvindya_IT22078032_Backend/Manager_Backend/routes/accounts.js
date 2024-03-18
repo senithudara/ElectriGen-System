@@ -1,28 +1,33 @@
-const express=require('express')
+const express = require('express');
 const {
     createAccount,
     getAccounts,
     getAccount,
     deleteAccount,
     updateAccount
-}=require('../controllers/accountController')
+} = require('../controllers/accountController');
+const requireAuth=require('../middleware/requireAuth')
 
-const router=express.Router()
+//require auth for all account routes
+const router = express.Router();
 
-//Get all accounts
-router.get('/',getAccounts)
+router.use(requireAuth)
 
-//Get a single  Account
-router.get('/:id',getAccount)
+// Get all accounts
+router.get('/', getAccounts);
 
-//post new an Account
-router.post('/',createAccount)
+// Get a single Account
+router.get('/:id', getAccount);
 
-//delete an Account
-router.delete('/:id',deleteAccount)
+// Post new an Account
+router.post('/', createAccount);
+
+// Delete an Account
+router.delete('/:id', deleteAccount);
 
 // Update an Account
-router.patch('/:id',updateAccount)
+router.patch('/:id', updateAccount);
 
 
-module.exports=router
+
+module.exports = router;
